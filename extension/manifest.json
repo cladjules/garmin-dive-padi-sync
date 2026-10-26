@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Garmin Dive → PADI",
+  "description": "Review and import Garmin dives into your PADI logbook without retyping them.",
+  "version": "0.5.7",
+  "permissions": ["storage"],
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    },
+    "default_title": "Open DiveBridge settings"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://learning.padi.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_ui": {
+    "open_in_tab": true,
+    "page": "settings.html"
+  },
+  "host_permissions": [
+    "https://learning.padi.com/*",
+    "https://divelog.global-prod.padi.com/*",
+    "https://personal.connectapi.garmin.com/*"
+  ]
+}
