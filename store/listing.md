@@ -85,15 +85,15 @@ Reads the user's PADI unit preference and up to 500 recent log summaries for dup
 
 No. All executable code is packaged with the extension. Provider responses contain data only and are validated before use.
 
-### Conservative user-data selections
+### User-data selections
 
-Select these categories because the extension handles them locally or sends them directly between the user's browser and Garmin/PADI, even though the developer does not receive them:
+Select only these categories. Chrome requires disclosure when the extension handles data locally or sends it directly between the user's browser and Garmin/PADI, even though the developer does not receive it:
 
 - Authentication information: Garmin Personal API key plus short-lived Garmin and PADI session tokens.
-- Health information: dive activity, depth, duration, temperature, gas, and tank-pressure data.
 - Location: dive-site text and GPS coordinates when present in the Garmin activity.
-- Website content: recent PADI log summaries required for duplicate checking.
-- User-generated content: reviewed dive titles, locations, notes, and Boat/Shore choice.
+- Website content: Garmin dive data, recent PADI log summaries used for duplicate checking, and the reviewed dive-log fields sent to PADI.
+
+Do not select Personally identifiable information, Health information, Financial and payment information, Personal communications, Web history, or User activity. The extension does not handle those categories. In particular, it does not read heart rate, biometrics, symptoms, diagnoses, procedures, or medical history. Garmin dive metrics such as depth, duration, temperature, gas, and tank pressure are treated here as dive-log website content, not health information. Chrome's User activity category refers to interactions such as clicks, scrolling, keystrokes, and network monitoring; DiveBridge does not monitor them.
 
 **Data-use declarations**
 

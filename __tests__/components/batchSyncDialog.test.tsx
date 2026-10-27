@@ -16,15 +16,15 @@ import type { GarminActivitySummary } from "../../src/types/garmin";
 const activities: readonly GarminActivitySummary[] = [
   {
     activityId: "101",
-    activityName: "Sardine Run",
+    activityName: "Blue Reef",
     bottomTimeSeconds: 3120,
-    locationName: "Moalboal",
+    locationName: "Sample Bay",
     maxDepthCentimeters: 1760,
     startTimeLocal: "2026-10-25 09:30:00",
   },
   {
     activityId: "102",
-    activityName: "Pescador Island",
+    activityName: "Coral Garden",
     startTimeLocal: "2026-10-24 08:15:00",
   },
 ];
@@ -35,10 +35,10 @@ const prepared: PreparedBatchDive = {
     bottomTimeMinutes: 52,
     date: "2026-10-25",
     diveType: "Boat",
-    location: "Moalboal",
+    location: "Sample Bay",
     maxDepth: 17.6,
     notes: "Imported from Garmin Dive.",
-    title: "Sardine Run",
+    title: "Blue Reef",
     unitSystem: "Metric",
   },
   imported: {
@@ -77,7 +77,7 @@ describe("DiveSelectionDialog", () => {
       ),
     ).toBeVisible();
 
-    await userEvent.click(screen.getByRole("checkbox", { name: /Pescador Island/i }));
+    await userEvent.click(screen.getByRole("checkbox", { name: /Coral Garden/i }));
     expect(onToggle).toHaveBeenCalledWith("102");
     await userEvent.click(screen.getByRole("button", { name: "Continue with 2 dives" }));
     expect(onContinue).toHaveBeenCalledOnce();
@@ -123,7 +123,7 @@ describe("batch progress and results", () => {
   it("shows progress and completes the reviewed batch", async () => {
     const onClose = vi.fn();
     const { rerender } = render(
-      <BatchProgressDialog current={1} itemTitle="Sardine Run" mode="checking" total={2} />,
+      <BatchProgressDialog current={1} itemTitle="Blue Reef" mode="checking" total={2} />,
     );
     expect(screen.getByRole("progressbar", { name: "50% complete" })).toBeVisible();
 
@@ -132,7 +132,7 @@ describe("batch progress and results", () => {
         onClose={onClose}
         onImportMore={vi.fn()}
         outcomes={[
-          { activityId: "101", logId: 991, status: "imported", title: "Sardine Run" },
+          { activityId: "101", logId: 991, status: "imported", title: "Blue Reef" },
           { activityId: "100", status: "skipped", title: "House Reef" },
         ]}
         remainingCount={2}

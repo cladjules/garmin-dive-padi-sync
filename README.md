@@ -77,9 +77,7 @@ Garmin's official export instructions are available at <https://support.garmin.c
 ## Development
 
 ```bash
-pnpm dev             # local interactive webpage at http://localhost:5173
 pnpm dev:extension   # rebuild the unpacked extension while source files change
-pnpm build:web       # static webpage build in web-dist/
 pnpm test            # unit and component tests
 pnpm test:coverage   # coverage report
 pnpm test:browser    # headed Chromium extension smoke test
@@ -87,8 +85,6 @@ pnpm store:assets    # generate Chrome Web Store screenshots and promo images
 pnpm verify          # lint, format, type-check, tests, and production build
 pnpm package         # build release/garmin-dive-padi-sync-v0.5.7.zip
 ```
-
-The local webpage uses sample dives so the complete choose → duplicate check → review → import journey can be developed without touching an account. Live Garmin and PADI access remains in the extension: a localhost page cannot safely access the authenticated PADI session on another origin, and this project never asks for a PADI password or token.
 
 Run `pnpm exec playwright install chromium` once before the browser smoke test.
 

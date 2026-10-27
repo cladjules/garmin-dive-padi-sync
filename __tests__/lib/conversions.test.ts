@@ -13,39 +13,39 @@ import type { ImportedDive } from "../../src/types/dive";
 
 describe("PADI unit conversions", () => {
   it("round-trips metric dive values through imperial display units", () => {
-    const feet = metersForPadi(17.646, "Imperial");
-    const fahrenheit = celsiusForPadi(28, "Imperial");
-    const psi = barForPadi(223.59, "Imperial");
+    const feet = metersForPadi(18, "Imperial");
+    const fahrenheit = celsiusForPadi(24, "Imperial");
+    const psi = barForPadi(200, "Imperial");
 
-    expect(feet).toBe(57.9);
-    expect(depthForPadiStorage(feet, "Imperial")).toBeCloseTo(17.648, 3);
-    expect(fahrenheit).toBe(82.4);
-    expect(temperatureForPadiStorage(fahrenheit, "Imperial")).toBe(28);
-    expect(psi).toBe(3242.9);
-    expect(pressureForPadiStorage(psi, "Imperial")).toBeCloseTo(223.59, 2);
+    expect(feet).toBe(59.1);
+    expect(depthForPadiStorage(feet, "Imperial")).toBeCloseTo(18.014, 3);
+    expect(fahrenheit).toBe(75.2);
+    expect(temperatureForPadiStorage(fahrenheit, "Imperial")).toBe(24);
+    expect(psi).toBe(2900.8);
+    expect(pressureForPadiStorage(psi, "Imperial")).toBeCloseTo(200, 2);
   });
 });
 
 describe("toEditablePadiDive", () => {
   it("creates a useful review draft without losing Garmin context", () => {
     const imported: ImportedDive = {
-      averageDepthMeters: 11.291,
-      bottomTimeMinutes: 52,
-      coordinates: { latitude: 13.8662216, longitude: -61.0788454 },
-      diveNumber: 803,
+      averageDepthMeters: 12,
+      bottomTimeMinutes: 45,
+      coordinates: { latitude: 0, longitude: 0 },
+      diveNumber: 42,
       fingerprint: "fingerprint",
-      localDate: "2023-11-22",
-      localStartTime: "10:44",
-      maxDepthMeters: 17.646,
+      localDate: "2024-01-01",
+      localStartTime: "12:00",
+      maxDepthMeters: 18,
       sourceFileName: "activity.fit",
     };
 
     const dive = toEditablePadiDive(imported, "Metric");
 
-    expect(dive.title).toBe("Dive #803");
-    expect(dive.location).toBe("13.86622, -61.07885");
-    expect(dive.maxDepth).toBe(17.6);
-    expect(dive.notes).toContain("Started at 10:44");
+    expect(dive.title).toBe("Dive #42");
+    expect(dive.location).toBe("0.00000, 0.00000");
+    expect(dive.maxDepth).toBe(18);
+    expect(dive.notes).toContain("Started at 12:00");
     expect(dive.notes).toContain("maps.google.com");
   });
 

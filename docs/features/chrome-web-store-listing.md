@@ -23,7 +23,7 @@ Screenshots contain no real account data. Re-run asset generation whenever the s
 
 ## Privacy boundary
 
-The listing conservatively discloses authentication, dive/health, location, website-content, and user-generated data because Chrome requires disclosure even when data is processed locally. The text must remain synchronized with extension behavior.
+The current Chrome dashboard selections are Authentication information, Location, and Website content because Chrome requires disclosure even when data is processed locally. Do not select Health information: the extension does not read biometric or medical data, and its dive metrics are disclosed as dive-log website content. Do not select User activity: DiveBridge does not monitor clicks, scrolling, keystrokes, browsing, or network activity. The dashboard currently has no User-generated content option. Keep these answers synchronized with both extension behavior and the choices shown by Chrome.
 
 The public privacy URL must be accessible without authentication. The GitHub repository is private, so a repository file alone is not a valid public privacy URL. Deploy `store/site/` to a public HTTPS host and replace all placeholders before submission.
 

@@ -10,21 +10,21 @@ import { StatusDialog } from "../../src/components/statusDialog";
 import type { EditablePadiDive, ImportedDive } from "../../src/types/dive";
 
 const dive: EditablePadiDive = {
-  bottomTimeMinutes: 52,
-  date: "2023-11-22",
+  bottomTimeMinutes: 45,
+  date: "2024-01-01",
   diveType: "Boat",
-  location: "Sardine Run, Moalboal",
-  maxDepth: 17.6,
+  location: "Blue Reef, Sample Bay",
+  maxDepth: 18,
   notes: "Imported from Garmin Dive.",
-  title: "Dive #803",
+  title: "Dive #42",
   unitSystem: "Metric",
 };
 
 const imported: ImportedDive = {
-  bottomTimeMinutes: 52,
+  bottomTimeMinutes: 45,
   fingerprint: "fingerprint",
-  localDate: "2023-11-22",
-  maxDepthMeters: 17.646,
+  localDate: "2024-01-01",
+  maxDepthMeters: 18,
   sourceFileName: "activity.fit",
 };
 
@@ -46,8 +46,8 @@ describe("ImportDialog", () => {
     );
 
     expect(screen.getByRole("dialog", { name: "Review your dive" })).toBeVisible();
-    expect(screen.getByLabelText("Dive title")).toHaveValue("Dive #803");
-    expect(screen.getByText("17.6 m")).toBeVisible();
+    expect(screen.getByLabelText("Dive title")).toHaveValue("Dive #42");
+    expect(screen.getByText("18 m")).toBeVisible();
 
     await userEvent.click(screen.getByRole("button", { name: "Import to PADI" }));
     expect(onSave).toHaveBeenCalledWith("Publish");

@@ -151,11 +151,11 @@ describe("PADI GraphQL client", () => {
     );
     vi.stubGlobal("fetch", fetchMock);
     const dive: EditablePadiDive = {
-      bottomTemperature: 82.4,
-      bottomTimeMinutes: 52,
-      date: "2023-11-22",
+      bottomTemperature: 75.2,
+      bottomTimeMinutes: 45,
+      date: "2024-01-01",
       diveType: "Boat",
-      endPressure: 946.9,
+      endPressure: 1087.8,
       gas: {
         heliumPercent: 0,
         label: "EANx32",
@@ -163,12 +163,12 @@ describe("PADI GraphQL client", () => {
         oxygenPercent: 32,
         padiValue: "Enriched_32",
       },
-      location: "Sardine Run, Moalboal",
-      maxDepth: 57.9,
+      location: "Blue Reef, Sample Bay",
+      maxDepth: 59.1,
       notes: "Imported from Garmin Dive.",
-      startPressure: 3242.9,
-      surfaceTemperature: 84.2,
-      title: "Dive #803",
+      startPressure: 2900.8,
+      surfaceTemperature: 77,
+      title: "Dive #42",
       unitSystem: "Imperial",
     };
 
@@ -195,9 +195,9 @@ describe("PADI GraphQL client", () => {
     const created = body.variables.general[0];
 
     expect(request.headers).toMatchObject({ Authorization: "Bearer header.payload.signature" });
-    expect(created?.depth_times.data.max_depth).toBeCloseTo(17.648, 3);
-    expect(created?.conditions.data.bottom_water_temp).toBe(28);
-    expect(created?.equipment.data.starting_pressure).toBeCloseTo(223.59, 2);
+    expect(created?.depth_times.data.max_depth).toBeCloseTo(18.014, 3);
+    expect(created?.conditions.data.bottom_water_temp).toBe(24);
+    expect(created?.equipment.data.starting_pressure).toBeCloseTo(200, 2);
     expect(created?.equipment.data.gas_mixture).toBe("Enriched_32");
   });
 
@@ -221,9 +221,9 @@ describe("PADI GraphQL client", () => {
         session,
         {
           bottomTimeMinutes: 52,
-          date: "2023-11-22",
+          date: "2024-01-01",
           diveType: "Boat",
-          location: "Moalboal",
+          location: "Sample Bay",
           maxDepth: 17.6,
           notes: "",
           title: "Single-Gas Dive",
@@ -254,9 +254,9 @@ describe("PADI GraphQL client", () => {
         session,
         {
           bottomTimeMinutes: 52,
-          date: "2023-11-22",
+          date: "2024-01-01",
           diveType: "Boat",
-          location: "Moalboal",
+          location: "Sample Bay",
           maxDepth: 17.6,
           notes: "",
           title: "Single-Gas Dive",

@@ -15,8 +15,8 @@ function installChrome(): { readonly sendMessage: ReturnType<typeof vi.fn> } {
     if (request.type === "garmin:save-key-and-list") {
       return Promise.resolve({
         activities: [
-          { activityId: "101", activityName: "Sardine Run" },
-          { activityId: "102", activityName: "Pescador Island" },
+          { activityId: "101", activityName: "Blue Reef" },
+          { activityId: "102", activityName: "Coral Garden" },
         ],
         checkedCount: 2,
         status: "dives",

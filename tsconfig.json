@@ -22,7 +22,6 @@
     "__tests__",
     "scripts",
     "vitest.config.ts",
-    "vite.config.ts",
     "playwright.config.ts",
     "eslint.config.js"
   ]

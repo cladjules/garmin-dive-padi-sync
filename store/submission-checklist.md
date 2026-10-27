@@ -43,7 +43,7 @@
 - [ ] Select Productivity and English.
 - [ ] Enter the single-purpose statement.
 - [ ] Paste all permission and host-permission justifications.
-- [ ] Declare the conservative user-data categories listed in `store/listing.md`.
+- [ ] Declare only the user-data categories listed in `store/listing.md`.
 - [ ] Certify no sale, advertising, lending, or unrelated use of user data.
 - [ ] Declare no in-app purchases.
 - [ ] Choose countries/regions and visibility.

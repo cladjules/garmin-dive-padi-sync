@@ -11,13 +11,13 @@ describe("parseGarminDiveFile", () => {
 
     const dive = await parseGarminDiveFile(file);
 
-    expect(dive.localDate).toBe("2023-11-22");
-    expect(dive.localStartTime).toBe("10:44");
-    expect(dive.maxDepthMeters).toBe(17.646);
-    expect(dive.averageDepthMeters).toBe(11.291);
-    expect(dive.bottomTimeMinutes).toBe(52);
-    expect(dive.coordinates?.latitude).toBeCloseTo(13.8662216, 5);
-    expect(dive.coordinates?.longitude).toBeCloseTo(-61.0788454, 5);
+    expect(dive.localDate).toBe("2024-01-01");
+    expect(dive.localStartTime).toBe("12:00");
+    expect(dive.maxDepthMeters).toBe(18);
+    expect(dive.averageDepthMeters).toBe(12);
+    expect(dive.bottomTimeMinutes).toBe(45);
+    expect(dive.coordinates?.latitude).toBe(0);
+    expect(dive.coordinates?.longitude).toBe(0);
     expect(dive.gas).toEqual({
       heliumPercent: 0,
       label: "Air",
@@ -25,10 +25,10 @@ describe("parseGarminDiveFile", () => {
       oxygenPercent: 21,
       padiValue: "Air",
     });
-    expect(dive.startPressureBar).toBe(223.59);
-    expect(dive.endPressureBar).toBe(65.29);
-    expect(dive.bottomTemperatureCelsius).toBe(28);
-    expect(dive.surfaceTemperatureCelsius).toBe(29);
+    expect(dive.startPressureBar).toBe(200);
+    expect(dive.endPressureBar).toBe(75);
+    expect(dive.bottomTemperatureCelsius).toBe(24);
+    expect(dive.surfaceTemperatureCelsius).toBe(25);
     expect(dive.fingerprint).toMatch(/^[a-f0-9]{64}$/);
   });
 
@@ -38,7 +38,7 @@ describe("parseGarminDiveFile", () => {
 
     const dive = await parseGarminDiveFile(file);
 
-    expect(dive.maxDepthMeters).toBe(17.646);
+    expect(dive.maxDepthMeters).toBe(18);
     expect(dive.sourceFileName).toBe("garmin-connect-export.zip");
   });
 

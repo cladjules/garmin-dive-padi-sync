@@ -67,7 +67,7 @@ describe("Garmin background sync", () => {
         new Response(
           JSON.stringify([
             { activityId: 1002, activityName: "Already imported" },
-            { activityId: 1001, activityName: "Latest new dive", locationName: "Moalboal" },
+            { activityId: 1001, activityName: "Latest new dive", locationName: "Sample Bay" },
           ]),
           { status: 200 },
         ),
@@ -94,7 +94,7 @@ describe("Garmin background sync", () => {
           activityName: "Latest new dive",
           beginTimestamp: undefined,
           bottomTimeSeconds: undefined,
-          locationName: "Moalboal",
+          locationName: "Sample Bay",
           maxDepthCentimeters: undefined,
           startTimeLocal: undefined,
         },

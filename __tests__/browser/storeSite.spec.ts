@@ -1,9 +1,13 @@
 import { expect, test } from "@playwright/test";
+import { resolve } from "node:path";
+import { pathToFileURL } from "node:url";
+
+const storeSiteUrl = pathToFileURL(resolve("store/site/index.html")).href;
 
 test("publishes readable privacy and support pages for the store listing", async ({
   page,
 }, testInfo) => {
-  await page.goto("http://127.0.0.1:5173/store/site/index.html");
+  await page.goto(storeSiteUrl);
   await expect(page.getByRole("heading", { name: "DiveBridge" })).toBeVisible();
   await expect(page.getByText("DiveBridge has no application server")).toBeVisible();
   await page.screenshot({ fullPage: true, path: testInfo.outputPath("store-support-home.png") });

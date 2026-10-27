@@ -69,9 +69,9 @@ describe("Garmin Personal API client", () => {
         JSON.stringify([
           {
             activityId: 9902,
-            activityName: "Sardine Run",
+            activityName: "Blue Reef",
             beginTimestamp: 1_793_000_000_000,
-            locationName: "Moalboal",
+            locationName: "Sample Bay",
             ignoredProviderField: "ignored",
           },
         ]),
@@ -82,9 +82,9 @@ describe("Garmin Personal API client", () => {
     await expect(listGarminDives("token", fetcher)).resolves.toEqual([
       {
         activityId: "9902",
-        activityName: "Sardine Run",
+        activityName: "Blue Reef",
         beginTimestamp: 1_793_000_000_000,
-        locationName: "Moalboal",
+        locationName: "Sample Bay",
         startTimeLocal: undefined,
       },
     ]);

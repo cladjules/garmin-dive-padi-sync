@@ -159,7 +159,7 @@ export function ImportDialog({
               <span>Dive site or location</span>
               <input
                 onChange={(event) => update("location", event.currentTarget.value)}
-                placeholder="e.g. Sardine Run, Moalboal"
+                placeholder="e.g. Blue Reef, Sample Bay"
                 required
                 type="text"
                 value={dive.location}

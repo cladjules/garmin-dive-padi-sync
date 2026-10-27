@@ -233,19 +233,19 @@ test("onboards Garmin and imports a reviewed dive batch once through the product
           body: JSON.stringify([
             {
               activityId: 8675310,
-              activityName: "Pescador Island",
-              bottomTime: 3164,
-              locationName: "Pescador, Moalboal",
-              maxDepth: 1764,
-              startTimeLocal: "2023-11-23 10:44:47",
+              activityName: "Coral Garden",
+              bottomTime: 2700,
+              locationName: "Sample Cove",
+              maxDepth: 1800,
+              startTimeLocal: "2024-01-02 12:00:00",
             },
             {
               activityId: 8675309,
-              activityName: "Sardine Run",
-              bottomTime: 3164,
-              locationName: "Moalboal",
-              maxDepth: 1764,
-              startTimeLocal: "2023-11-22 10:44:47",
+              activityName: "Blue Reef",
+              bottomTime: 2700,
+              locationName: "Sample Bay",
+              maxDepth: 1800,
+              startTimeLocal: "2024-01-01 12:00:00",
             },
           ]),
           contentType: "application/json",
@@ -353,8 +353,8 @@ test("onboards Garmin and imports a reviewed dive batch once through the product
     await page.getByRole("button", { name: "Continue with 2 dives" }).click();
 
     await expect(page.getByRole("dialog", { name: "Ready to import" })).toBeVisible();
-    await expect(page.locator('input[value="Sardine Run"]')).toBeVisible();
-    await expect(page.locator('input[value="Pescador Island"]')).toBeVisible();
+    await expect(page.locator('input[value="Blue Reef"]')).toBeVisible();
+    await expect(page.locator('input[value="Coral Garden"]')).toBeVisible();
     await captureStoreScreenshot(page, "05-review-before-import-1280x800.png");
     await page.getByLabel("Entry type for all dives").selectOption("Boat");
     await page.getByRole("button", { name: "Import 2 to PADI" }).click();
