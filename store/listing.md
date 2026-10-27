@@ -105,11 +105,11 @@ Do not select Personally identifiable information, Health information, Financial
 
 **Privacy policy URL**
 
-`REPLACE_WITH_PUBLIC_PRIVACY_POLICY_URL`
+`https://cladjules.github.io/garmin-dive-padi-sync/privacy.html`
 
 **Support URL**
 
-`REPLACE_WITH_PUBLIC_SUPPORT_URL`
+`https://cladjules.github.io/garmin-dive-padi-sync/support.html`
 
 ## Distribution
 

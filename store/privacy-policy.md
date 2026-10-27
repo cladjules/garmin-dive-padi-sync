@@ -73,4 +73,4 @@ This policy may be updated when DiveBridge's behavior or legal obligations chang
 
 ## Contact
 
-Questions or privacy requests: `SUPPORT_EMAIL`
+For questions or privacy requests, use the verified developer contact shown on DiveBridge's Chrome Web Store listing.

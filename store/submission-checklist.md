@@ -9,8 +9,8 @@
 
 ## Public URLs
 
-- [ ] Replace every `REPLACE_WITH_...` and `SUPPORT_EMAIL` placeholder under `store/`.
-- [ ] Deploy `store/site/` to a public HTTPS URL.
+- [ ] Confirm the GitHub Pages workflow has deployed `store/site/` successfully.
+- [ ] Verify the published privacy and support URLs from `store/listing.md` without signing in.
 - [ ] Confirm the privacy URL opens without login and goes directly to the privacy policy.
 - [ ] Confirm the support URL opens without login.
 - [ ] Put the final privacy and support URLs in `store/listing.md` and the dashboard.

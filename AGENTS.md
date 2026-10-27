@@ -25,4 +25,5 @@
 - Style the unlocked PADI setup step with DiveBridge aqua/teal accents. Reserve red for errors, warnings, and destructive actions rather than ordinary navigation.
 - Keep the official Garmin Personal API destination as a prominent setup call-to-action adjacent to the key field; do not reduce it to an inline text link.
 - Keep Chrome Web Store copy, privacy disclosures, reviewer instructions, and generated screenshots under `store/`. Never commit reviewer credentials or API keys; deploy only the static privacy/support site publicly.
+- Deploy `store/site/` to GitHub Pages through `.github/workflows/pages.yml`; the Pages artifact must not include extension source, test fixtures, release packages, or credentials.
 - Keep repository fixtures, screenshots, and examples synthetic and identity-neutral. Never use a developer's name, personal locations, real dive dates, coordinates, or profile values as sample data.

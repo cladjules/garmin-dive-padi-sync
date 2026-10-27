@@ -10,7 +10,7 @@ The `store/` directory contains the copy, privacy disclosures, reviewer instruct
 - `store/privacy-policy.md`: canonical privacy-policy source.
 - `store/reviewer-instructions.md`: confidential-dashboard test procedure with credential placeholders.
 - `store/submission-checklist.md`: account, asset, URL, review, and release checklist.
-- `store/site/`: deployable static privacy and support site. Replace `SUPPORT_EMAIL` before publishing.
+- `store/site/`: static privacy and support site deployed by `.github/workflows/pages.yml`.
 - `store/assets/`: 128px icon, five 1280×800 product screenshots, and optional promotional tiles.
 - `scripts/generateStorePromo.mjs`: deterministic promotional-tile and icon generation.
 - `__tests__/browser/extensionSmoke.spec.ts`: optionally emits store screenshots from the fully mocked production extension journey.
@@ -25,7 +25,7 @@ Screenshots contain no real account data. Re-run asset generation whenever the s
 
 The current Chrome dashboard selections are Authentication information, Location, and Website content because Chrome requires disclosure even when data is processed locally. Do not select Health information: the extension does not read biometric or medical data, and its dive metrics are disclosed as dive-log website content. Do not select User activity: DiveBridge does not monitor clicks, scrolling, keystrokes, browsing, or network activity. The dashboard currently has no User-generated content option. Keep these answers synchronized with both extension behavior and the choices shown by Chrome.
 
-The public privacy URL must be accessible without authentication. The GitHub repository is private, so a repository file alone is not a valid public privacy URL. Deploy `store/site/` to a public HTTPS host and replace all placeholders before submission.
+The public privacy URL must be accessible without authentication. GitHub Pages deploys only `store/site/` as a static artifact when that directory or the workflow changes on `main`; extension source and release files are not included in the Pages artifact.
 
 Never place live reviewer credentials or Garmin API keys in the repository. Put them only in the Chrome Web Store dashboard's confidential test-instruction fields.
 
