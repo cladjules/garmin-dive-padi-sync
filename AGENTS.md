@@ -4,6 +4,7 @@
 
 - [Garmin dive sync into PADI](docs/features/garmin-fit-import.md)
 - [Extension welcome and settings](docs/features/extension-onboarding.md)
+- [Chrome Web Store listing kit](docs/features/chrome-web-store-listing.md)
 - [Local web preview](docs/features/local-web-preview.md)
 
 ## Durable decisions
@@ -24,3 +25,4 @@
 - Keep the PADI setup card and header shortcut muted and disabled until the current settings state confirms Garmin is connected; label the locked state **Connect Garmin first** and unlock it immediately after validation.
 - Style the unlocked PADI setup step with DiveBridge aqua/teal accents. Reserve red for errors, warnings, and destructive actions rather than ordinary navigation.
 - Keep the official Garmin Personal API destination as a prominent setup call-to-action adjacent to the key field; do not reduce it to an inline text link.
+- Keep Chrome Web Store copy, privacy disclosures, reviewer instructions, and generated screenshots under `store/`. Never commit reviewer credentials or API keys; deploy only the static privacy/support site publicly.

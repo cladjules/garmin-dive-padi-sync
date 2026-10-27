@@ -1,4 +1,4 @@
-import { chromium, expect, test } from "@playwright/test";
+import { chromium, expect, test, type Page } from "@playwright/test";
 import { zipSync } from "fflate";
 import { cp, mkdir, mkdtemp, readFile, writeFile } from "node:fs/promises";
 import { createServer, type Server } from "node:http";
@@ -7,13 +7,73 @@ import { join } from "node:path";
 
 import { createGarminDiveFit } from "../fixtures/garminDiveFixture";
 
+const storeAssetsDirectory = process.env.STORE_ASSETS_DIRECTORY;
+
+async function captureStoreScreenshot(
+  page: Page,
+  fileName: string,
+  anchorSelector?: string,
+): Promise<void> {
+  if (!storeAssetsDirectory) {
+    return;
+  }
+
+  await mkdir(storeAssetsDirectory, { recursive: true });
+  await page.setViewportSize({ height: 800, width: 1280 });
+  if (anchorSelector) {
+    await page.locator(anchorSelector).evaluate((element) => {
+      document.documentElement.style.scrollBehavior = "auto";
+      const top = element.getBoundingClientRect().top + window.scrollY - 20;
+      window.scrollTo(0, Math.max(0, top));
+    });
+  } else {
+    await page.evaluate(() => {
+      document.documentElement.style.scrollBehavior = "auto";
+      window.scrollTo(0, 0);
+    });
+  }
+  await page.screenshot({
+    animations: "disabled",
+    path: join(storeAssetsDirectory, fileName),
+  });
+}
+
 function startHarness(): Promise<{ readonly port: number; readonly server: Server }> {
   const server = createServer((_request, response) => {
     response.writeHead(200, { "Content-Type": "text/html" });
     response.end(`<!doctype html>
       <html>
-        <head><meta charset="utf-8"><title>PADI Learning smoke harness</title></head>
-        <body><main><h1>PADI Learning</h1><p>Controlled extension smoke harness</p></main></body>
+        <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>PADI Learning</title>
+          <style>
+            * { box-sizing: border-box; }
+            body { background: #f5f8f8; color: #183c43; font-family: Arial, sans-serif; margin: 0; }
+            header { align-items: center; background: #fff; border-bottom: 1px solid #dce7e5; display: flex; justify-content: space-between; padding: 20px 42px; }
+            h1 { font-size: 22px; margin: 0; }
+            header span { color: #5e777b; font-size: 13px; }
+            main { margin: 0 auto; max-width: 1080px; padding: 38px 30px; }
+            main h2 { font-size: 32px; margin: 0 0 9px; }
+            main > p { color: #6c8286; margin: 0 0 25px; }
+            .log-grid { display: grid; gap: 14px; grid-template-columns: repeat(3, 1fr); }
+            .log-card { background: #fff; border: 1px solid #dce7e5; border-radius: 14px; min-height: 150px; padding: 18px; }
+            .log-card strong { display: block; margin-bottom: 8px; }
+            .log-card span { color: #7a8e91; font-size: 12px; }
+          </style>
+        </head>
+        <body>
+          <header><h1>PADI Learning</h1><span>My logbook</span></header>
+          <main>
+            <h2>Dive logbook</h2>
+            <p>Review your recreational dive history.</p>
+            <div class="log-grid">
+              <div class="log-card"><strong>Recent dives</strong><span>Your saved logs appear here.</span></div>
+              <div class="log-card"><strong>Drafts</strong><span>Finish incomplete dive logs.</span></div>
+              <div class="log-card"><strong>Statistics</strong><span>See your logged dive activity.</span></div>
+            </div>
+          </main>
+        </body>
       </html>`);
   });
 
@@ -228,6 +288,12 @@ test("onboards Garmin and imports a reviewed dive batch once through the product
     await expect(
       settingsPage.locator(".settings-nav").getByRole("button", { name: "Connect Garmin first" }),
     ).toBeDisabled();
+    await captureStoreScreenshot(settingsPage, "01-extension-overview-1280x800.png");
+    await captureStoreScreenshot(
+      settingsPage,
+      "02-connect-garmin-1280x800.png",
+      ".setup-section-heading",
+    );
     const privacyHeadingBox = await privacyHeading.boundingBox();
     const connectionHeadingBox = await connectionHeading.boundingBox();
     const padiImportHeadingBox = await padiImportHeading.boundingBox();
@@ -258,6 +324,11 @@ test("onboards Garmin and imports a reviewed dive batch once through the product
     await expect(
       settingsPage.locator(".settings-nav").getByRole("link", { name: /Open PADI Logbook/ }),
     ).toBeVisible();
+    await captureStoreScreenshot(
+      settingsPage,
+      "03-ready-for-padi-1280x800.png",
+      ".setup-section-heading",
+    );
     const setupCards = settingsPage.locator(".setup-grid > .settings-card");
     await expect(setupCards).toHaveCount(2);
     const connectionCardBox = await setupCards.nth(0).boundingBox();
@@ -278,11 +349,13 @@ test("onboards Garmin and imports a reviewed dive batch once through the product
     await launcher.click();
     await expect(page.getByRole("dialog", { name: "Choose dives to import" })).toBeVisible();
     await expect(page.getByText("2 new dives")).toBeVisible();
+    await captureStoreScreenshot(page, "04-choose-dives-1280x800.png");
     await page.getByRole("button", { name: "Continue with 2 dives" }).click();
 
     await expect(page.getByRole("dialog", { name: "Ready to import" })).toBeVisible();
     await expect(page.locator('input[value="Sardine Run"]')).toBeVisible();
     await expect(page.locator('input[value="Pescador Island"]')).toBeVisible();
+    await captureStoreScreenshot(page, "05-review-before-import-1280x800.png");
     await page.getByLabel("Entry type for all dives").selectOption("Boat");
     await page.getByRole("button", { name: "Import 2 to PADI" }).click();
 

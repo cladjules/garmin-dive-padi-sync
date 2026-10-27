@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="DiveBridge privacy policy." />
+    <title>DiveBridge Privacy Policy</title>
+    <style>
+      :root {
+        color: #153a40;
+        font-family:
+          Inter,
+          ui-sans-serif,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background: #edf5f3;
+        margin: 0;
+      }
+      main {
+        background: white;
+        border: 1px solid #d7e5e2;
+        border-radius: 20px;
+        margin: 28px auto;
+        max-width: 860px;
+        padding: 34px;
+      }
+      h1 {
+        font-size: 38px;
+        letter-spacing: -0.04em;
+        margin: 8px 0;
+      }
+      h2 {
+        font-size: 20px;
+        margin-top: 30px;
+      }
+      p,
+      li {
+        color: #5d777b;
+        line-height: 1.7;
+      }
+      a {
+        color: #087c78;
+        font-weight: 750;
+      }
+      .eyebrow {
+        color: #087c78;
+        font-size: 11px;
+        font-weight: 850;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+      .effective {
+        color: #789091;
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a href="index.html">← DiveBridge</a>
+      <div class="eyebrow">Privacy</div>
+      <h1>DiveBridge Privacy Policy</h1>
+      <p class="effective">Effective October 27, 2026</p>
+      <p>
+        DiveBridge helps a diver review and transfer selected Garmin dive activities into the
+        diver's PADI web logbook. This policy describes the information the extension handles, why
+        it is needed, where it goes, and how it is retained.
+      </p>
+
+      <h2>Information handled</h2>
+      <p>DiveBridge handles the minimum data needed for its import workflow:</p>
+      <ul>
+        <li>a user-created, revocable Garmin Personal API key and short-lived bearer tokens;</li>
+        <li>
+          Garmin dive summaries, selected FIT archives, dive metrics, and optional coordinates;
+        </li>
+        <li>the active PADI browser-session token already maintained by PADI Learning;</li>
+        <li>recent PADI log summaries needed for duplicate detection;</li>
+        <li>reviewed dive fields sent to PADI only after confirmation; and</li>
+        <li>the user's preferred Boat/Shore entry type.</li>
+      </ul>
+
+      <h2>Use</h2>
+      <p>
+        Information is used only to find Garmin dives, compare them with the live PADI logbook, let
+        the user review them, and create only the recreational PADI logs the user explicitly
+        confirms. It is not used for advertising, marketing profiles, creditworthiness, lending,
+        analytics, or any unrelated purpose. DiveBridge does not sell user information.
+      </p>
+
+      <h2>Storage and retention</h2>
+      <p>
+        The Garmin key and Boat/Shore preference are stored in extension-local browser storage. The
+        user can remove them by disconnecting Garmin, clearing extension storage, revoking the key,
+        or uninstalling DiveBridge. Garmin bearer tokens, PADI session tokens, duplicate rows, FIT
+        archives, parsed profiles, and active fingerprints remain only in memory while needed.
+        DiveBridge does not maintain duplicate history.
+      </p>
+
+      <h2>Transmission and sharing</h2>
+      <p>
+        At the user's direction, DiveBridge communicates over HTTPS directly with Garmin at
+        <code>personal.connectapi.garmin.com</code> and with PADI at
+        <code>learning.padi.com</code> and <code>divelog.global-prod.padi.com</code>. There is no
+        DiveBridge application server, database, analytics service, advertising network, or cloud
+        copy of the user's dives. The developer therefore does not receive or retain keys, tokens,
+        dive profiles, or PADI logs.
+      </p>
+
+      <h2>Human access</h2>
+      <p>
+        The developer cannot access information processed locally by the extension. A human will not
+        read user information unless the user deliberately supplies specific information for support
+        and consents to that access, or access is necessary for security or legal compliance.
+      </p>
+
+      <h2>Security</h2>
+      <p>
+        Provider communications use HTTPS. DiveBridge requests only the Garmin and PADI access
+        required for its stated functionality, contains no remote executable code, and does not
+        request broad browsing access. The read-only Garmin key is revocable but should still be
+        treated as a secret.
+      </p>
+
+      <h2>User choices</h2>
+      <p>
+        Users control each lookup and import. PADI is changed only after confirmation. Users can
+        exclude dives, save drafts, disconnect Garmin, revoke the key, clear extension storage, or
+        uninstall DiveBridge. PADI logs already created are controlled through PADI.
+      </p>
+
+      <h2>Third-party services</h2>
+      <p>
+        Garmin and PADI process information under their own terms and privacy policies. DiveBridge
+        is independent and is not affiliated with, sponsored by, or endorsed by Garmin or PADI.
+      </p>
+
+      <h2>Children</h2>
+      <p>
+        DiveBridge is not directed to children and does not knowingly collect children's information
+        for the developer.
+      </p>
+
+      <h2>Changes and contact</h2>
+      <p>
+        This policy may be updated when behavior or legal obligations change. Material data-practice
+        changes will be disclosed before they take effect. Questions or privacy requests:
+        <code>SUPPORT_EMAIL</code>.
+      </p>
+    </main>
+  </body>
+</html>

@@ -14,6 +14,7 @@
     "pretty": "prettier --check .",
     "pretty:fix": "prettier --write .",
     "preview:web": "vite preview",
+    "store:assets": "pnpm build && STORE_ASSETS_DIRECTORY=store/assets/screenshots playwright test __tests__/browser/extensionSmoke.spec.ts --config=playwright.config.ts && node scripts/generateStorePromo.mjs",
     "test": "vitest run",
     "test:browser": "pnpm build && playwright test --config=playwright.config.ts",
     "test:coverage": "vitest run --coverage",

@@ -83,6 +83,7 @@ pnpm build:web       # static webpage build in web-dist/
 pnpm test            # unit and component tests
 pnpm test:coverage   # coverage report
 pnpm test:browser    # headed Chromium extension smoke test
+pnpm store:assets    # generate Chrome Web Store screenshots and promo images
 pnpm verify          # lint, format, type-check, tests, and production build
 pnpm package         # build release/garmin-dive-padi-sync-v0.5.7.zip
 ```
@@ -103,3 +104,5 @@ The extension has no server, database, polling, scheduled synchronization, or an
 - The current package targets desktop Chrome and Edge. A native share-target app is the next step for a one-tap phone workflow.
 
 See [the feature documentation](docs/features/garmin-fit-import.md) for the data flow, contracts, and risks.
+
+Chrome Web Store submission copy, privacy disclosures, reviewer instructions, public-site files, and generated image assets live in [`store/`](store/). Follow [`store/submission-checklist.md`](store/submission-checklist.md) before uploading a release.
